@@ -1,6 +1,5 @@
 const Programming = require("../models/programming");
 
- /* Mi colección se llama programming */
 const getProgramming = async (req, res) => {
     try {
         const programming = await Programming.find();
@@ -14,6 +13,24 @@ const getProgramming = async (req, res) => {
     }
 }
 
+const createProgramming = async (req, res) => {
+    try {
+        const programming = new Programming(req.body);
+        await programming.save();
+        res.status(200).json({
+            message: "Programación creada correctamente",
+            programming
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            message: "Error al crear la programación",
+            error
+        });
+    }
+}
+
 module.exports = {
-    getProgramming
+    getProgramming,
+    createProgramming
 }
