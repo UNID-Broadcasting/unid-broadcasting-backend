@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 const programmingSchema = new Schema({
   name: String,
   description: String,
+  programNumber: Number,
   image: String,
   date: Date,
   time: String,
