@@ -1,7 +1,10 @@
-const date = new Date();
-const day = date.getDate();
-const month = date.getMonth();
-const year = date.getFullYear();
+/* Obtenemos la fecha de la zona horaria de México */
+const getMexicoDate = () => {
+  const date = new Date();
+  const offset = date.getTimezoneOffset();
+  const mexicoDate = new Date(date.getTime() - offset * 60 * 1000);
+  return mexicoDate;
+};
 
 const dayNames = [
   "Domingo",
@@ -28,15 +31,20 @@ const monthNames = [
   "Diciembre",
 ];
 
-const dayName = dayNames[date.getDay()];
-const monthName = monthNames[date.getMonth()];
-const time = date.toLocaleTimeString();
+const dayName = dayNames[getMexicoDate().getDay()];
+const day = getMexicoDate().getDate();
+const monthName = monthNames[getMexicoDate().getMonth()];
+const year = getMexicoDate().getFullYear();
+
+const time = getMexicoDate().toLocaleTimeString();
 
 const today = (req, res) => {
-  res.status(200).json({
-    message: "Fecha actual",
-    date: `${dayName} ${day} de ${monthName} de ${year}`,
-    time: `${time}`,
+  res.json({
+    dayName,
+    day,
+    monthName,
+    year,
+    time,
   });
 };
 
