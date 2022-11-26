@@ -18,13 +18,14 @@ app.get("/", (_, res) => {
     message: "UNID - Radio y TV",
     version: "1.0.0",
     copyrigth: "UNID Acapulco",
- });
+  });
 });
 
 //Rutas de la API
 app.use("/api/programming", require("./src/routes/programming.routes"));
 app.use("/api/podcast", require("./src/routes/podcast.routes"));
 app.use("/api/videocast", require("./src/routes/videocast.routes"));
+app.use("/api/date", require("./src/routes/date.routes"));
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
