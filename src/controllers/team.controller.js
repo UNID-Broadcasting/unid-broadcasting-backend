@@ -18,7 +18,7 @@ const createTeamMember = async (req, res) => {
     await team.save();
     res.status(200).json({
       message: "Integrante creado correctamente",
-      team,
+      member,
     });
   } catch (error) {
     res.status(500).json({
