@@ -1,42 +1,12 @@
-/* Obtenemos la fecha de la zona horaria de México */
-const getMexicoDate = () => {
-  const date = new Date();
-  const offset = date.getTimezoneOffset();
-  const mexicoDate = new Date(date.getTime() - offset * 60 * 1000);
-  return mexicoDate;
-};
+/* Vamos a declarar en una variable la zona horaria y apartir de allí vamos a recuperar el nombre del día, día, nombre del mes, año y hora */
+const moment = require("moment-timezone");
+const timezone = "America/Mexico_City";
 
-const dayNames = [
-  "Domingo",
-  "Lunes",
-  "Martes",
-  "Miercoles",
-  "Jueves",
-  "Viernes",
-  "Sabado",
-];
-
-const monthNames = [
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
-];
-
-const dayName = dayNames[getMexicoDate().getDay()];
-const day = getMexicoDate().getDate();
-const monthName = monthNames[getMexicoDate().getMonth()];
-const year = getMexicoDate().getFullYear();
-
-const time = getMexicoDate().toLocaleTimeString();
+const dayName = moment().tz(timezone).format("dddd");
+const day = moment().tz(timezone).format("DD");
+const monthName = moment().tz(timezone).format("MMMM");
+const year = moment().tz(timezone).format("YYYY");
+const time = moment().tz(timezone).format("HH:mm:ss");
 
 const today = (req, res) => {
   res.json({
