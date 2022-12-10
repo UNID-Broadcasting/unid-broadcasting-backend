@@ -27,6 +27,8 @@ app.use("/api/podcast", require("./src/routes/podcast.routes"));
 app.use("/api/videocast", require("./src/routes/videocast.routes"));
 app.use("/api/date", require("./src/routes/date.routes"));
 app.use("/api/team", require("./src/routes/team.routes"));
+app.use("/api/auth", require("./src/routes/auth.routes"));
+app.use("/api/user", require("./src/routes/user.routes"));
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
