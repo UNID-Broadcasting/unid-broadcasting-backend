@@ -118,7 +118,7 @@ const loginUser = async (req, res) => {
 
 const verifyUser = async (req, res) => {
   try {
-    const { user } = req.body;
+    const { user } = req;
 
     const token = await generateJWT(user.id);
 
