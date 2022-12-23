@@ -1,4 +1,31 @@
 const User = require("../models/user");
+const bcrypt = require("bcrypt");
+
+const getUserById = (req, res) => {
+  const { id } = req.params;
+
+  User.findById(id, (err, user) => {
+    if (err) {
+      return res.status(500).json({
+        ok: false,
+        message: "Error inesperado",
+      });
+    }
+
+    if (!user) {
+      return res.status(404).json({
+        ok: false,
+        message: "Usuario no encontrado",
+      });
+    }
+
+    res.status(200).json({
+      ok: true,
+      message: "Usuario encontrado",
+      data: user,
+    });
+  });
+};
 
 const updateUser = async (req, res) => {
   try {
@@ -6,13 +33,6 @@ const updateUser = async (req, res) => {
       req.body;
     const { id } = req.params;
     const { user } = req;
-
-    /* if (user.role !== "ADMIN") {
-            return res.status(401).json({
-                ok: false,
-                message: "No tienes permisos para actualizar usuarios",
-            });
-        } */
 
     if (user.id !== id) {
       return res.status(401).json({
@@ -84,5 +104,6 @@ const updateUser = async (req, res) => {
 };
 
 module.exports = {
+  getUserById,
   updateUser,
 };
