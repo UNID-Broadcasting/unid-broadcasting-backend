@@ -47,6 +47,7 @@ const registerUser = async (req, res) => {
       name: user.name,
       lastname: user.lastname,
       career: user.career,
+      profileImage: user.imageProfileURL,
     };
 
     res.status(201).json({
@@ -99,6 +100,7 @@ const loginUser = async (req, res) => {
       name: user.name,
       lastname: user.lastname,
       career: user.career,
+      profileImage: user.imageProfileURL,
     };
 
     res.status(200).json({
@@ -131,6 +133,7 @@ const verifyUser = async (req, res) => {
       name: user.name,
       lastname: user.lastname,
       career: user.career,
+      profileImage: user.imageProfileURL,
     };
 
     res.status(200).json({
