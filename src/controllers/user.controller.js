@@ -29,8 +29,17 @@ const getUserById = (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const { email, username, password, role, active, name, lastname, career } =
-      req.body;
+    const {
+      email,
+      username,
+      password,
+      role,
+      active,
+      name,
+      lastname,
+      career,
+      imageProfileURL,
+    } = req.body;
     const { id } = req.params;
     const { user } = req;
 
@@ -68,6 +77,7 @@ const updateUser = async (req, res) => {
       name,
       lastname,
       career,
+      imageProfileURL,
     };
 
     if (password) {
@@ -88,6 +98,7 @@ const updateUser = async (req, res) => {
       name: userUpdated.name,
       lastname: userUpdated.lastname,
       career: userUpdated.career,
+      imageProfileURL: userUpdated.imageProfileURL,
     };
 
     res.status(200).json({
