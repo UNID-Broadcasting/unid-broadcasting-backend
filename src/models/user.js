@@ -39,6 +39,11 @@ const userSchema = new Schema({
     type: String,
     required: true["Definir la carrera es obligatorio"],
   },
+  imageProfileURL: {
+    type: String,
+    default:
+      "https://firebasestorage.googleapis.com/v0/b/unid-dashboard-r-1672021883115.appspot.com/o/profile-images%2FUriel-UNID.png?alt=media&token=6a3f9d59-e3c3-406a-a33d-f4022f2b3a8a",
+  },
 });
 
 userSchema.methods.toJSON = function () {
